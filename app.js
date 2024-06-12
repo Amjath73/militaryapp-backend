@@ -30,7 +30,16 @@ app.get("/view", (req, res) => {
     )
 })
 
-
+app.post("/search", (req, res) => {
+    let input = req.body
+    militarymodel.find(input).then(
+        (data) => { res.json(data) }
+    ).catch(
+        (error) => {
+            res.json(error)
+        }
+    )
+})
 
 app.listen(8081, ()=>{
     console.log("server started")
